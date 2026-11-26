@@ -20,6 +20,7 @@ def _train_once(x_train, y_train, x_validation, y_validation, width, seed,
     best_validation_error = float(np.max(np.abs(
         predict(initial, x_validation) - y_validation
     )))
+    validation_max_error_history = [best_validation_error]
     patience_reference = best_validation_error
     waiting = 0
     n = len(x_train)
@@ -44,6 +45,7 @@ def _train_once(x_train, y_train, x_validation, y_validation, width, seed,
         error = float(np.max(np.abs(
             predict(parameters, x_validation) - y_validation
         )))
+        validation_max_error_history.append(error)
         # Keep the best checkpoint, and stop if validation error stalls.
         if error < best_validation_error:
             best_parameters = parameters.copy()
@@ -69,6 +71,7 @@ def _train_once(x_train, y_train, x_validation, y_validation, width, seed,
     return {
         "parameters": best_parameters,
         "validation_max_error": best_validation_error,
+        "validation_max_error_history": validation_max_error_history,
         "gradient_norm": gradient_norm,
         "seed": seed,
     }
@@ -77,7 +80,11 @@ def _train_once(x_train, y_train, x_validation, y_validation, width, seed,
 def train_model(x_train, y_train, x_validation, y_validation, width,
                 seeds=range(21, 31), max_iterations=1500, patience=100,
                 min_delta=1e-8):
-    """Train random starts and return the one with the smallest gradient norm."""
+    """Train random starts and return the smallest-gradient fit with its history.
+
+    validation_max_error_history contains the initial validation error followed
+    by one value for each recorded BFGS iteration.
+    """
     # Different seeds give different starting weights; keep the run with the
     # smallest gradient norm at its saved checkpoint.
     fits = [

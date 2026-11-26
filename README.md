@@ -1,10 +1,10 @@
 # Universal Approximation by Shallow Networks
 
-The shared code is in three `src/` modules: `functions.py` defines the target
-families, `model.py` handles network prediction and training, and
-`experiment.py` handles data generation, test evaluation, and baselines. Each
-team member can copy `notebooks/template.ipynb`, select their target and
-parameters, and save a metrics CSV in `results/`.
+The shared code is in `src/`: `functions.py` defines the target families,
+`model.py` handles network prediction and training, `experiment.py` handles
+data generation, test evaluation, and baselines, and `plots.py` provides
+visualizations. Each team member can copy `notebooks/template.ipynb`, select
+their target and parameters, and save metrics and figures in `results/`.
 
 ## Setup
 
