@@ -1,6 +1,5 @@
-torch
 numpy
+scipy
 pandas
-matplotlib
 notebook
 ipykernel
