@@ -26,6 +26,8 @@ def generate_data(target, n_samples=200, domain=(-1.0, 1.0), seed=21):
     x = rng.uniform(low, high, size=(n_samples, 1))
     return x, np.asarray(target(x), dtype=float).reshape(x.shape)
 
+generate_data(affine)
+
 
 def prepare_data(target, domain=(-1.0, 1.0), n_train=1000, n_val=200,
                  n_test=500, seed=21):

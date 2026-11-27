@@ -63,3 +63,6 @@ def run_experiments(x_train, y_train, x_val, y_val, widths=(4, 16, 64),
         path.parent.mkdir(parents=True, exist_ok=True)
         results.to_csv(path, index=False)
     return results, trained_runs
+
+
+data = prepare_data(affine)

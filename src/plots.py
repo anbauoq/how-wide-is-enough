@@ -11,8 +11,8 @@ def plot_width_comparison(results):
     Figure. Required columns: domain, width, learning_rate, validation_mse.
     Positive MSE uses a log scale; zero MSE uses a linear scale instead.
     """
-    if results.empty:
-        raise ValueError("results is empty; run an experiment before plotting")
+    #if results.empty:
+     #   raise ValueError("results is empty; run an experiment before plotting")
     required = {"domain", "width", "learning_rate", "validation_mse"}
     if not required.issubset(results.columns):
         raise ValueError("results must contain domain, width, learning_rate, and validation_mse")

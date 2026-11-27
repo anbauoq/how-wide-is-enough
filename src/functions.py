@@ -7,7 +7,6 @@ accept NumPy arrays and preserve their shape.
 
 import numpy as np
 
-
 def affine(x, horizontal_shift=0.0, vertical_shift=0.0):
     """Return 2(x - horizontal_shift) + 1 + vertical_shift, with x's shape."""
     return 2 * (x - horizontal_shift) + 1 + vertical_shift
